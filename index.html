@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div align="center">
+    <h2>Рішення квадратного рівняння</h2>
+  </div>
+  <p><b>завдання:</b> рішити квадратне рівняння виду a*x<sup>2</sup>+b*x+c=0
+    <p><b>рішення скриптом</b>
+      <form name="figure">
+        <input type="text" name="a" value="" size=10> * x<sup>2</sup> +
+        <input type="text" name="b" value="" size=10> * x +
+        <input type="text" name="c" value="" size=10> = 0
+        <p><input type="button" value="Рішити" onclick=Calculate()>
+          <p>Результат:
+            <p>
+              Квадратне рівняння
+              <input type="text" name="dis" value="" size=20>
+              <p>
+                x<sub>1</sub> = <input type="text" name="x1" value="" size=20> x
+                <sub>2</sub> = <input type="text" name="x2" value="" size=20>
+      </form>
+      <script language=javascript>
+        function Calculate() {
+          var a = eval(document.forms.figure.a.value);
+          var b = eval(document.forms.figure.b.value);
+          var c = eval(document.forms.figure.c.value);
+          var d = b * b - 4 * a * c;
+          document.forms.figure.dis.value = d;
+          if (d < 0) {
+            var str = "";
+            str += ((-b) / (2 * a)).toFixed(4);
+            str += " + i * ";
+            str += (Math.sqrt(-d) / (2 * a)).toFixed(4);
+            document.forms.figure.x1.value = str;
+            str = "";
+            str += ((-b) / (2 * a)).toFixed(4);
+            str += " - i * ";
+            str += (Math.sqrt(-d) / (2 * a)).toFixed(4);
+            document.forms.figure.x2.value = str;
+          }
+          else {
+            document.forms.figure.x1.value = (-b + Math.sqrt(d)) / (2 * a).toFixed(4);
+            document.forms.figure.x2.value = (-b - Math.sqrt(d)) / (2 * a).toFixed(4);
+          }
+        }
+      </script>
+
+</body>
+
+</html>
